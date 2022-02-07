@@ -2,7 +2,7 @@ let img;
 
 function preload() {
   img = loadImage('assets/OpeningScreen.jpg');
-  if (img.height!=displayHeight) {
+  if (img.height != displayHeight) {
     img.resize(0, displayHeight);
   }
 }
@@ -24,17 +24,22 @@ function windowResized() {
 
 
 //percentageWidth is between 0.05 to 1 for all functions
-function mirrorImage(percentageWidth) { 
-  background(0);    
+function mirrorImage(
+  percentageWidth,
+  // verticallyFlipped,
+  // horizontallyFlipped,
+  // degreesRotated
+) {
+  background(0);
   push();
   copy(
-    img, 0, 0, int(img.width*percentageWidth), img.height, 
-    0, 0, int(img.width*(percentageWidth)), img.height
+    img, 0, 0, int(img.width * percentageWidth), img.height,
+    0, 0, int(img.width * (percentageWidth)), img.height
   ); //left side
   scale(-1, 1);
-  translate(int(-img.width*(2*percentageWidth)), 0);
+  translate(int(-img.width * (2 * percentageWidth)), 0);
   copy(
-    img, 0, 0, int(img.width*percentageWidth), img.height, 
-    1, 0, int(img.width*percentageWidth), img.height); //right side
+    img, 0, 0, int(img.width * percentageWidth), img.height,
+    1, 0, int(img.width * percentageWidth), img.height); //right side
   pop();
 }
